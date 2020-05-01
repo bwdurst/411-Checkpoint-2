@@ -1,5 +1,4 @@
 export default {
-   loggedIn: false,
    businesses: [
       {
          "businessName": 'Alama Drafthouse',

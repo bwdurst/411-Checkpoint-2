@@ -1,11 +1,10 @@
 import { connect } from 'react-redux'
-import Listings from '../components/Listings'
+import ListingContainer from '../components/ListingContainer'
 
 const mapStateToProps = (state) => {
     return {
-        loggedIn: state.loggedIn,
         businesses: state.businesses
     }
 }
 
-export default connect(mapStateToProps)(Listings)
+export default connect(mapStateToProps)(ListingContainer)
