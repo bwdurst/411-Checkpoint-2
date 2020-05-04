@@ -7,6 +7,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles({
   table: {
@@ -37,7 +38,7 @@ export default function Listing(props) {
               <TableCell component="th" scope="row">
                 {row.name}
               </TableCell>
-              <TableCell align="right">{props.name}</TableCell>
+              <TableCell align="right"><Link to={`/business/${car.id}`}>{props.name}</Link></TableCell>
               <TableCell align="right">{props.description}</TableCell>
               <TableCell align="right">{props.address}</TableCell>
               <TableCell align="right">{props.hours}</TableCell>

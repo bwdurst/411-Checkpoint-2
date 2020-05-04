@@ -7,6 +7,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import { Link } from 'react-router-dom'
 
 const useStyles = makeStyles({
   table: {
@@ -15,9 +16,18 @@ const useStyles = makeStyles({
   name: {
     width: '100px'
   },
+  description: {
+    width: '300px'
+  },
+  hours: {
+    width: '100px'
+  },
+  address: {
+    width: '120px'
+  },
   container: {
     width: '80%',
-    alignSelf: 'center'
+    margin: '40px auto'
   }
 });
 
@@ -32,20 +42,17 @@ export default function ListingContainer(props) {
             <TableRow>
               <TableCell align="right">Name</TableCell>
               <TableCell align="right">Description</TableCell>
-              <TableCell align="right">Address</TableCell>
               <TableCell align="right">Hours</TableCell>
+              <TableCell align="right">Address</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {props.businesses.map((business) => (
               <TableRow key={business.name}>
-                {/* <TableCell component="th" scope="row">
-                {business.name}
-              </TableCell> */}
-                <TableCell className={classes.name} align="right">{business.businessName}</TableCell>
-                <TableCell align="right">{business.address}</TableCell>
-                <TableCell align="right">{business.description}</TableCell>
-                <TableCell align="right">{business.operatingHours}</TableCell>
+                <TableCell className={classes.name} align="right"><Link to={`/business/${business.id}`}>{business.businessName}</Link></TableCell>
+                <TableCell className={classes.description} align="right">{business.description}</TableCell>
+                <TableCell className={classes.hours} align="right">{business.operatingHours}</TableCell>
+                <TableCell className={classes.address} align="right">{business.address}</TableCell>
               </TableRow>
             ))}
           </TableBody>

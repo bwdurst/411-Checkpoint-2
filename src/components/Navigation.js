@@ -11,6 +11,7 @@ import { Link } from 'react-router-dom'
 
 const useStyles = makeStyles((theme) => ({
   root: {
+    margin: '0 auto',
     flexGrow: 1,
   },
   menuButton: {
@@ -39,11 +40,15 @@ export default function ButtonAppBar() {
           <Typography variant="h6" className={classes.title}>
             News
           </Typography>
-          <Link to="/">
-            <Button className={classes.button} color="inherit">Listings</Button>
+          <Link className={classes.button} to="/">
+            <Button color="inherit">Listings</Button>
           </Link>
-          <Button color="inherit">Add Listing</Button>
-          <Button color="inherit">Login</Button>
+          <Link className={classes.button} to="/addlisting">
+            <Button color="inherit">Add Listing</Button>
+          </Link>
+          <Link className={classes.button} to="login">
+            <Button color="inherit">Login</Button>
+          </Link>
         </Toolbar>
       </AppBar>
     </div>
