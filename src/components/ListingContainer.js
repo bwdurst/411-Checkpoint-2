@@ -41,7 +41,6 @@ const useStyles = makeStyles((theme) => ({
 
 export default function ListingContainer(props) {
   const classes = useStyles();
-
   const checkAuth = () => (document.cookie === 'loggedIn=true') ? true : false;
 
   return (
@@ -65,6 +64,7 @@ export default function ListingContainer(props) {
                 <TableCell className={classes.hours} align="right">{business.operatingHours}</TableCell>
                 <TableCell className={classes.address} align="right">{business.address}</TableCell>
                 <TableCell className={classes.delete} align="right">
+
                   {(checkAuth()) ?
                     <Button
                       onClick={() => props.handleListingDelete(i)}
@@ -81,6 +81,7 @@ export default function ListingContainer(props) {
                       startIcon={<DeleteIcon />}
                     > Delete
                     </Button>}
+                    
                 </TableCell>
               </TableRow>
             ))}

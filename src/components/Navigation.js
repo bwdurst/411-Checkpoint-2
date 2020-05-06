@@ -58,7 +58,6 @@ export default function NavBar() {
             <Link className={classes.button} to="login">
               <Button color="inherit">Login</Button>
             </Link>}
-
         </Toolbar>
       </AppBar>
     </div>

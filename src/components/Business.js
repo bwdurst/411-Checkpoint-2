@@ -28,7 +28,6 @@ const useStyles = makeStyles({
 
 export default function Business(props) {
   const classes = useStyles();
-  // const bull = <span className={classes.bullet}>•</span>;
   const business = props.businesses.filter(bus => bus.id == props.match.params.id)[0];
 
   return (
