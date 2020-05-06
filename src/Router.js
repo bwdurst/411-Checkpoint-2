@@ -17,7 +17,6 @@ const ProtectedRoute = ({ ...theRest }) => {
 }
 
 const Router = () => {
-    console.log(document.cookie)
     return (
         <Switch>
             <Route exact path="/" component={ListingContainer} />

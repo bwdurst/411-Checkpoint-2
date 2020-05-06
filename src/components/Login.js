@@ -6,6 +6,8 @@ import cookie from 'cookie';
 
 const useStyles = makeStyles((theme) => ({
   root: {
+    display: 'flex',
+    justifyContent: 'center',
     '& > *': {
       margin: theme.spacing(1),
       width: '25ch',
@@ -18,11 +20,11 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const login = () => {
-  document.cookie = cookie.serialize('loggedIn', 'booya', {
+  document.cookie = cookie.serialize('loggedIn', 'true', {
     maxAge: 60 * 1000
   })
 
-  // window.location.replace("/")
+  window.location.replace("/")
 }
 
 export default function Login(props) {

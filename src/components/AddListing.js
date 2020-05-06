@@ -1,5 +1,5 @@
 import React from 'react';
-import {useState} from 'react'
+import { useState } from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import { Button } from '@material-ui/core';
@@ -11,40 +11,51 @@ const useStyles = makeStyles((theme) => ({
     flexFlow: 'column',
     maxWidth: 500,
   },
-      button: {
-        width: 30,
-        margin: '12px'
-      }
+  button: {
+    width: 30,
+    margin: '12px'
+  }
 }));
 
 
 export default function AddListing(props) {
   const classes = useStyles();
-  
+
   const [state, setState] = useState({
-    name: '',
+    businessName: '',
     description: '',
     address: '',
-    hours: '',
+    operatingHours: '',
   });
-  
-  function handleTextChange(e) {
+
+  const handleTextChange = (e) => {
     const newState = { ...state }
     newState[e.target.id] = e.target.value
     setState(newState)
   }
 
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    const payload = { ...state }
+    payload.id = props.businesses.length + 1
+    props.addListing(payload)
+    e.target.reset()
+  }
+
   return (
-    <form className={classes.root} noValidate autoComplete="off">
-      <TextField onChange={(e) => handleTextChange(e)} id="name" label="Company Name" />
+    <form
+      onSubmit={(e) => handleSubmit(e)}
+      className={classes.root}
+      noValidate autoComplete="off">
+      <TextField onChange={(e) => handleTextChange(e)} id="businessName" label="Company Name" />
       <TextField onChange={(e) => handleTextChange(e)} id="description" label="Description" />
       <TextField onChange={(e) => handleTextChange(e)} id="address" label="Address" />
-      <TextField onChange={(e) => handleTextChange(e)} id="hours" label="Hours of Operation" />
+      <TextField onChange={(e) => handleTextChange(e)} id="operatingHours" label="Hours of Operation" />
       <Button
-      onClick={() => props.addListing(state)}
-      className={classes.button} 
-      variant="contained" 
-      color="primary" >Submit</Button>
+        type="submit"
+        className={classes.button}
+        variant="contained"
+        color="primary" >Submit</Button>
     </form>
   );
 }

@@ -7,6 +7,7 @@ import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import { Link } from 'react-router-dom'
+import cookie from 'cookie'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -27,8 +28,13 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function ButtonAppBar() {
+export default function NavBar() {
   const classes = useStyles();
+
+  const logout = () => {
+    document.cookie = cookie.serialize('loggedIn', 'false')
+    window.location.replace("/")
+  }
 
   return (
     <div className={classes.root}>
@@ -46,9 +52,13 @@ export default function ButtonAppBar() {
           <Link className={classes.button} to="/addlisting">
             <Button color="inherit">Add Listing</Button>
           </Link>
-          <Link className={classes.button} to="login">
-            <Button color="inherit">Login</Button>
-          </Link>
+
+          {(document.cookie === "loggedIn=true") ?
+            <Button onClick={() => logout()} color="inherit">Logout</Button> :
+            <Link className={classes.button} to="login">
+              <Button color="inherit">Login</Button>
+            </Link>}
+
         </Toolbar>
       </AppBar>
     </div>
